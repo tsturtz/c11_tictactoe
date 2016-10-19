@@ -146,16 +146,26 @@ var start_game = function(){
     $('.start_button').click(function(){
         var board_size = $('select').val();
         main_game.create_cells(board_size);
+        main_game.create_players();
         $('#cover_page').hide();
     });
 };
 
+//reset board and player states. return to start
+var reset_game = function(){
+    $('.reset').click(function(){
+        $('.game_inner').html('');
+        $('div#player_1').removeClass('active_player');
+        $('div#player_2').removeClass('active_player');
+        $('#cover_page').show();
+    });
+};
 
 var main_game = null;
 $(document).ready(function(){
     main_game = new game_template($('.game_inner'));
     start_game();
-    main_game.create_players();
+    reset_game();
 });
 
 var questions = [{
