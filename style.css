@@ -204,3 +204,7 @@ select[name="choose_board"] {
 .reset {
     font-size: 2vh;
 }
+.cell{
+    border: 1px solid black;
+    display: inline-block;
+}
