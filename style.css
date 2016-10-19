@@ -51,7 +51,7 @@ body {
 }
 
 .page_inner {
-    margin-top: 5%;
+    margin-top: 10%;
     height: 50vh;
     width: 50vh;
     z-index: 1;
@@ -88,6 +88,20 @@ body {
 
 .question_inner {
     z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question {
+    border-bottom: 1px solid black;
+    padding-bottom: 5%;
+    font-size: 20px;
+}
+
+.options {
+    padding-top: 5%;
+    cursor: pointer;
 }
 
 .win_inner {
@@ -213,6 +227,7 @@ select[name="choose_board"] {
 
 .reset {
     font-size: 2vh;
+    cursor: pointer;
 }
 .cell{
     border: 1px solid black;
