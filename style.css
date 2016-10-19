@@ -76,8 +76,25 @@ body {
 }
 
 .cover_inner {
+    z-index: 5;
     flex-direction: column;
     text-align: center;
+}
+
+.game_inner {
+    z-index: 4;
+}
+
+.question_inner {
+    z-index: 3;
+}
+
+.win_inner {
+    z-index: 2;
+}
+
+.about_inner {
+    z-index: 1;
 }
 
 .user_input {
