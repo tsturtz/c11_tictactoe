@@ -259,8 +259,8 @@ var questions = [{
     },
     {
         question: 'A quote that goes over four lines of text',
-        choices: ['(a) Is considered plagiarism', '(b) Should be blocked indented'],
-        answer: '(b) Should be blocked indented'
+        choices: ['(a) Should be blocked indented', '(b) Is considered plagiarism'],
+        answer: '(a) Should be blocked indented'
     },
     {
         question: 'When do you cite a source in your paper?',
@@ -290,8 +290,8 @@ var questions = [{
     },
     {
         question: 'In this citation, what is the name of the publisher?<br>Jones, Andrew. "The Cambodian Genocide." <em>Genocide: A comprehensive introduction</em>, Routledge, 2006, pp 40-60.',
-        choices: ['(a) Jones, Andrew', '(b) The Cambodian Genocide', '(c) <em>Genocide: A comprehensive introduction</em>', '(d) 2006', '(e) pp. 40-60','(f) Routledge'],
-        answer: '(f) Routledge'
+        choices: ['(a) Jones, Andrew', '(b) The Cambodian Genocide', '(c) <em>Genocide: A comprehensive introduction</em>', '(d) Routledge','(e) 2006','(f) pp. 40-60'],
+        answer: '(d) Routledge'
     },
     {
         question: 'In this citation, what does et al. stand for?<br> Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
@@ -327,19 +327,19 @@ var questions = [{
     },
     {
         question: 'When using NoodleTools to cite your sources, do you have to fill in every single box to get a proper citation?',
-        choices: ['(a) Yes. That\'s why the boxes are there', '(b) No. Only fill in the boxes necessary for the source you are citing.'],
-        answer: '(b) No. Only fill in the boxes necessary for the source you are citing.'
+        choices: ['(a) No. Only fill in the boxes necessary for the source you are citing.', '(b) Yes. That\'s why the boxes are there'],
+        answer: '(a) No. Only fill in the boxes necessary for the source you are citing.'
     },
     {
         question: 'When you block indent a direct quote, how many spaces or tabs do you use to indent',
-        choices: ['(a) Ten spaces or two tabs.', '(b) Five spaces or one tab.'],
-        answer: '(b) Five spaces or one tab.'
+        choices: ['(a) Five spaces or one tab.', '(b) Ten spaces or two tabs.'],
+        answer: '(a) Five spaces or one tab.'
         // explanation: '-this is new to MLA 8.'
     },
     {
         question: 'When citing a web source, whether from a website or database, do you include a URL in your citation?',
-        choices: ['(a) No. URLs are long and messy and should never be included', '(b) Yes! URLs are required by the new MLA 8 style'],
-        answer: '(b) Yes! URLs are required by the new MLA 8 style'
+        choices: ['(a) Yes! URLs are required by the new MLA 8 style', '(b) No. URLs are long and messy and should never be included'],
+        answer: '(a) Yes! URLs are required by the new MLA 8 style'
         // explanation: 'URLs are now required in your citations.'
     },
     {
@@ -350,12 +350,12 @@ var questions = [{
     },
     {
         question: 'Which example is a proper in-text (parenthetical) citation?',
-        choices: ['(a) (239 Smith).', '(b) (Smith, 239).', '(c) (Smith, p. 239).', '(d) (Smith 239).'],
-        answer: '(d) (Smith 239).'
+        choices: ['(a) (239 Smith).', '(b) (Smith, 239).', '(c) (Smith 239).', '(d) (Smith, p. 239).'],
+        answer: '(c) (Smith 239).'
         // explanation:'There is no comma, and no p. used in the parenthetical citation.'
     },
     {
-        question: 'Is this the correct order to list these citations on your works cited? How do you know what order to put them in?<br>Smith, John. "Modern World History."<br>Smith, John. "World History Overview"',
+        question: 'Is this the correct order to list these citations on your works cited? How do you know what order to put them in?<br><br>Smith, John. "Modern World History."<br>Smith, John. "World History Overview"',
         choices: ['(a) No. This is not the correct order', '(b) Yes, this is the correct order to list them. Since the author’s name is the same – you have to alphabetize by the Title. So, “Modern” is before “World”.'],
         answer: '(b) Yes, this is the correct order to list them. Since the author’s name is the same – you have to alphabetize by the Title. So, “Modern” is before “World”.'
     },
