@@ -120,7 +120,7 @@ var game_template = function(main_element){
         [2,4,6]
     ];
     this.create_cells = function(cell_per_row){
-        this.cell_size = 100/cell_per_row;
+        this.cell_size = Math.floor(100/cell_per_row);
         this.cell_count = cell_per_row * cell_per_row;
         //console.log('game template create cells called');
         for(var i=0; i < this.cell_count; i++){
@@ -131,8 +131,8 @@ var game_template = function(main_element){
         }
     };
     this.create_players = function(){
-        var player1 = new player_template('X', $('#player1'));
-        var player2 = new player_template('O', $('#player2'));
+        var player1 = new player_template('X', $('#player_1'));
+        var player2 = new player_template('O', $('#player_2'));
         this.players.push(player1);
         this.players.push(player2);
         this.players[0].activate_player();
@@ -205,26 +205,39 @@ var start_game = function(){
     $('.start_button').click(function(){
         var board_size = $('select').val();
         main_game.create_cells(board_size);
+        main_game.create_players();
         $('#cover_page').hide();
     });
 };
 
+//reset board and player states. return to start
+var reset_game = function(){
+    $('.reset').click(function(){
+        $('.game_inner').html('');
+        $('div#player_1').removeClass('active_player');
+        $('div#player_2').removeClass('active_player');
+        $('#cover_page').show();
+    });
+};
 
 var main_game = null;
 $(document).ready(function(){
     main_game = new game_template($('.game_inner'));
     start_game();
-    main_game.create_players();
+    reset_game();
 });
 
 var questions = [{
         question: 'Veronica Smith<br> Mr. Thornton<br>U.S. History – Per. 2<br>10 Sept. 2016<br>Is this a proper MLA heading?',
-        choices: ['a)No. In your heading, the month should be spelled out (10 September 2016)', 'b)Yes, it is correct'],
-        answer: 'a)No. In your heading, the month should be spelled out (10 September 2016)'
+
+        choices: ['(a) No. In your heading, the month should be spelled out (10 September 2016)', '(b) Yes, it is correct'],
+        answer: '(a) No. In your heading, the month should be spelled out (10 September 2016)'
+
     },
 
     {
         question: 'Are in-text citations the same thing as parenthetical citations?',
+
         choices: ['a)Yes, they are the same thing', 'b)No they are different'],
         answer: 'a)Yes, they are the same thing'
     },
@@ -252,16 +265,45 @@ var questions = [{
         question: 'A quote that goes over four lines of text',
         choices: ['a)Is considered plagiarism', 'b)Should be blocked indented'],
         answer: 'b)Should be blocked indented'
+
+    },
+    {
+        question: 'Does MLA 8 allow you to underline, italicize, or bold the title of your paper?',
+        choices: ['(a) No. In MLA 8, titles should not be underlined, italicized, or bolded.', '(b) Yes, titles can be bolded, underlined, or italicized - your choice'],
+        answer: '(a) No. In MLA 8, titles should not be underlined, italicized, or bolded.'
+    },
+    {
+        question: 'Choose the proper format for your MLA 8 paper:',
+        choices: ['(a) Single-spaced, 12 pt. Arial font', '(b) Double-spaced, 14 pt. Times New Roman font', '(c) Double-spaced, 12 pt. Times New Roman font'],
+        answer: '(c) Double-spaced, 12 pt. Times New Roman font'
+    },
+    {
+        question: 'Choose the correct way to list your sources on your Works Cited document',
+        choices: ['(a) List them in the order that they appear in your paper', '(b) List them in alphabetical (A to Z) order'],
+        answer: '(b) List them in alphabetical (A to Z) order'
+    },
+    {
+        question: 'Which method of indentation do you use on your works cited document when formatting your citations:',
+        choices: ['(a) Hanging indent', '(b) Block indent'],
+        answer: '(a) Hanging indent'
+    },
+    {
+        question: 'A quote that goes over four lines of text',
+        choices: ['(a) Is considered plagiarism', '(b) Should be blocked indented'],
+        answer: '(b) Should be blocked indented'
+
     },
     {
         question: 'When do you cite a source in your paper?',
-        choices: ['a) When you directly quote someone or something', 'b) When you interview someone and use something that they said', 'c) When you use common knowledge – like ‘Water freezes at 32 degrees F', 'd) When you put a direct quote into your own words', '(a), (b), and (d) only'],
+        choices: ['(a) When you directly quote someone or something', '(b) When you interview someone and use something that they said', '(c) When you use common knowledge – like ‘Water freezes at 32 degrees F', '(d) When you put a direct quote into your own words', '(a), (b), and (d) only'],
         answer: '(a), (b), and (d) only'
     },
     {
         question: 'In this citation, what is the title of the book? <br>Barnaby, Benjamin. <em>Cool Science for Middle School Fairs</em>, Yale UP, 2010.',
+
         choices: ['a)<em> Cool Science for Middle School Science Fairs</em>', 'b)Barnaby Benjamin', 'c)Yale UP', 'd)2010'],
         answer:   'a)<em> Cool Science for Middle School Science Fairs</em>'
+
     },
     {
         question: 'What type of source is this citation for?<br>Garner Anthony. "History of 20th Century Literature." <em>Literature Database,</em> www.litdb.com/history/20th-century.html. Accessed 16 Aug. 2016',
@@ -271,6 +313,7 @@ var questions = [{
     {
         question: 'If the reader of your paper wants more information on a source cited-in text, where do they look for information?',
         choices: ['(a) The Internet', '(b) The index', '(c) Your works cited document'],
+
         answer: '(c) Your works cited document'
     },
     {
@@ -292,16 +335,50 @@ var questions = [{
         question: 'When citing sources in your paper:',
         choices: ['(a) You only need to cite each source one time -no matter how often you use it.', '(b)You should cite direct quotes at the end of the sentence where it is used.'],
         answer: '(b)You should cite direct quotes at the end of the sentence where it is used.'
+
+
+        // explanation: 'It provides a full citation which gives the reader information about the in-text source you provide.'
+    },
+    {
+        question: 'What type of source is this citation for?<br>Stanton, Daniel. "Methods of Analysis in Research Papers". <em>Science of Informatics</em>, vol. 12, no. 2, 2011, pp. 2-15. <em>JSTOR</em>, doi:10.10.5.1/access_secure_doc#30892. Acessed 11 Oct. 2015.',
+        choices: ['(a) This citation is for a journal article in a database called <em>JSTOR</em>.', '(b) anything else provided'],
+        answer: '(b) anything else provided'
+    },
+    {
+        question: 'In this citation, what is the name of the publisher?<br>Jones, Andrew. "The Cambodian Genocide." <em>Genocide: A comprehensive introduction</em>, Routledge, 2006, pp 40-60.',
+        choices: ['(a) Jones, Andrew', '(b) The Cambodian Genocide', '(c) <em>Genocide: A comprehensive introduction</em>', '(d) 2006', '(e) pp. 40-60', '(f) Routledge'],
+        answer: '(f) Routledge'
+    },
+    {
+        question: 'In this citation, what does et al. stand for?<br>Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
+        choices: ['(a) The words et al. are a suffix to the author\'s name.', '(b) The words et al. mean "and others", because there are more than three authors.', '(c) The words et al. mean there are editors and authors for this book.'],
+        answer: '(b) The words et al. is latin for "and others", because there are more than three authors.'
+        // explanation: 'and is used when there are 3+ authors or 2+ editors'
+    },
+    {
+        question: 'When citing sources in your paper:',
+        choices: ['(a) You only need to cite each source one time -no matter how often you use it.', '(b) You should cite direct quotes at the end of the sentence where it is used.'],
+        answer: '(b) You should cite direct quotes at the end of the sentence where it is used'
+
     },
     {
         question: 'In MLA 8, are you required to include page numbers at the top of your works cited and/or annotated bibliography pages?',
         choices: ['(a) No, only your paper needs to have page numbers', '(b) Yes, your paper, works cited, and annotated bibliography should have a running page number from the beginning of the document to the end.'],
+
         answer: '(b) Yes, there should be pages numbered provided for the entire document from beginning to end.'
     },
     {
         question: 'Where in your paper does your works cited go?',
         choices: ['(a) On the same page right after the last paragraph of your paper.', '(b) On page one of your document', '(c) On a separate page after your paper.'],
         answer: '(c) On a separate page after your paper.'
+
+
+    },
+    {
+        question: 'Where in your paper does your works cited go?',
+        choices: ['(a) On the same page right after the last paragraph of your paper', '(b) On page one of your document', '(c) On a separate page after your paper'],
+        answer: '(c) On a separate page after your paper'
+
     },
     {
         question: 'What would be considered a "container" in MLA 8?',
@@ -311,32 +388,50 @@ var questions = [{
     {
         question: 'These are book citations. Which one is correct?',
         choices: ['(a) Baron, Sandra. <em>Yosemite National Park</em>. New York: Chelsea, 2010, pp. 2-10.', '(b) Baron, Sandra. <em>Yosemite National Park</em>, Chelsea, 2010, pp. 2-10'],
+
         answer: '(b) Baron, Sandra. <em>Yosemite National Park</em>, Chelsea, 2010, pp. 2-10'
     },
     {
         question: 'When using NoodleTools to cite your sources, do you have to fill in every single box to get a proper citation?',
         choices: ['(a) Yes. That\'s why the boxes are there', '(b) No. Only fill in the boxes necessary for the source you are citing.'],
+
+        answer: 'b) Baron, Sandra. <em>Yosemite National Park</em>, Chelsea, 2010, pp. 2-10'
+        // explanation:'You no longer include the city of publication in a citation. It is now optional and used only in special cases'
+    },
+    {
+        question: 'When using NoodleTools to cite your sources, do you have to fill in every single box to get a proper citation?',
+        choices: ['(a) Yes. That\'s why the boxes are there', '(b) No. Only fill in the boxes necessary for the source you are citing'],
+
         answer: '(b) No. Only fill in the boxes necessary for the source you are citing.'
     },
     {
         question: 'When you block indent a direct quote, how many spaces or tabs do you use to indent',
+
         choices: ['(a) Ten spaces or two tabs.', '(b) Five spaces or one tab.'],
         answer: '(b) Five spaces or one tab.'
+
+        // explanation: '-this is new to MLA 8.'
+
     },
     {
         question: 'When citing a web source, whether from a website or database, do you include a URL in your citation?',
         choices: ['(a) No. URLs are long and messy and should never be included', '(b) Yes! URLs are required by the new MLA 8 style'],
         answer: '(b) Yes! URLs are required by the new MLA 8 style'
+
+        // explanation: 'URLs are now required in your citations.'
+
     },
     {
         question: 'Which citation is correct?',
         choices: ['(a) Johnson, Betty. “Abstract Art.” <em>Modern Art – San Francisco,</em> 24 Jan. 2015, www.MASF.org/abstract_art.html. Accessed 11 Oct. 2015.', '(b) Johnson, Betty. “Abstract Art.” <em>Modern Art – San Francisco,</em> 24 Jan. 2015, http://www.MASF.org/abstract_art.html. Accessed 11 Oct. 2015.'],
         answer: '(a) Johnson, Betty. “Abstract Art.” <em>Modern Art – San Francisco,</em> 24 Jan. 2015, www.MASF.org/abstract_art.html. Accessed 11 Oct. 2015.'
+        // explanation:'In the URL, you do NOT include the http:// prefix. Start with whatever comes after the // marks.'
     },
     {
         question: 'Which example is a proper in-text (parenthetical) citation?',
         choices: ['(a) (239 Smith).', '(b) (Smith, 239).', '(c) (Smith, p. 239).', '(d) (Smith 239).'],
         answer: '(d) (Smith 239).'
+        // explanation:'There is no comma, and no p. used in the parenthetical citation.'
     },
     {
         question: 'Is this the correct order to list these citations on your works cited? How do you know what order to put them in?<br>Smith, John. "Modern World History."<br>Smith, John. "World History Overview"',
@@ -347,6 +442,7 @@ var questions = [{
         question: 'If a webpage citation has no author, what part of the citation do you use as the in-text or parenthetical citation?',
         choices: ['(a) The webpage article title (which is in quotes)', '(b) The publisher of the website'],
         answer: '(a) The webpage article title (which is in quotes)'
+        // explanation: 'this would be the next part of your citation, after an author’s name, so you would use the article title as your in-text citation.'
     },
     {
         question: 'What is the password to log in to the Library website?',
