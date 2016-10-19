@@ -295,7 +295,7 @@ var questions = [{
     },
     {
         question: 'In this citation, what does et al. stand for?<br> Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
-        choices: ['(a) The words et al. are a suffix to the author\'s name.', '(b) The words et al. mean "and others", because there are more htan three authors.', '(c) The words et al. mean there are editors and authors for this book.'],
+        choices: ['(a) The words et al. are a suffix to the author\'s name.', '(b) The words et al. mean "and others", because there are more than three authors.', '(c) The words et al. mean there are editors and authors for this book.'],
         answer: '(b) The words et al. mean "and others", because there are more than three authors.'
     },
     {
