@@ -1,0 +1,81 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background-color: beige;
+    background: url(images/stock-photo-blank-office-desk-background-with-copy-space-for-your-text-top-view-business-and-office-supplies-220530460.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+#logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    height: 20vh;
+    width: 20vh;
+    border-radius: 50%;
+    background-color: #6a6969;
+    border: 10px solid white;
+    box-sizing: border-box;
+}
+
+#main_wrapper {
+    height: 100%;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+}
+
+#notebook {
+    height: 80%;
+    width: 600px;
+    background-color: #2d91e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#footer {
+    height: 20%;
+    width: 600px;
+    background-color: #5f1f18;
+    bottom: 0;
+    position: fixed;
+}
+
+.page {
+    height: 85%;
+    width: 450px;
+    background-color: white;
+    position: absolute;
+}
+.binding {
+    height: 100%;
+    width: 50px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+}
+
+.player {
+    height: 100%;
+    width: 300px;
+    background-color: yellow;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#phone {
+    height: 100%;
+    width: 300px;
+    background-color: brown;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
