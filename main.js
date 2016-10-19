@@ -61,7 +61,7 @@ var game_template = function(main_element){
         [2,4,6]
     ];
     this.create_cells = function(cell_per_row){
-        this.cell_size = 100/cell_per_row;
+        this.cell_size = Math.floor(100/cell_per_row);
         this.cell_count = cell_per_row * cell_per_row;
         //console.log('game template create cells called');
         for(var i=0; i < this.cell_count; i++){
@@ -72,8 +72,8 @@ var game_template = function(main_element){
         }
     };
     this.create_players = function(){
-        var player1 = new player_template('X', $('#player1'));
-        var player2 = new player_template('O', $('#player2'));
+        var player1 = new player_template('X', $('#player_1'));
+        var player2 = new player_template('O', $('#player_2'));
         this.players.push(player1);
         this.players.push(player2);
         this.players[0].activate_player();
