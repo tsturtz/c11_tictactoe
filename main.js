@@ -72,8 +72,8 @@ var game_template = function(main_element){
         }
     };
     this.create_players = function(){
-        var player1 = new player_template('X', $('#player1'));
-        var player2 = new player_template('O', $('#player2'));
+        var player1 = new player_template('X', $('#player_1'));
+        var player2 = new player_template('O', $('#player_2'));
         this.players.push(player1);
         this.players.push(player2);
         this.players[0].activate_player();
