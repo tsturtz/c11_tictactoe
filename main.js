@@ -146,6 +146,8 @@ var player_template = function(symbol, element){
 var main_game = null;
 $(document).ready(function(){
     main_game = new game_template($('#gamebody'));
-    main_game.create_cells(3);
+    $('start').click(function(){
+        main_game.create_cells(3);
+    });
     main_game.create_players();
 });
