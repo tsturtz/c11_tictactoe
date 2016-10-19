@@ -146,6 +146,7 @@ var start_game = function(){
     $('.start_button').click(function(){
         var board_size = $('select').val();
         main_game.create_cells(board_size);
+        $('#cover_page').hide();
     });
 };
 
