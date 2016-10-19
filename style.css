@@ -218,3 +218,6 @@ select[name="choose_board"] {
     border: 1px solid black;
     display: inline-block;
 }
+.active_player{
+    color: red;
+}
