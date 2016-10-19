@@ -3,19 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
 </head>
 <body>
 <div>
-    <div id="logo">
+    <div id="logo" class="center">
+        <h1>The More You<br>Tic-Tac-Know<sup>&trade;</sup></h1>
     </div>
     <div id='main_wrapper'>
         <div id="notebook" class="center">
+            <div class="binding spiral"></div>
             <div id="cover_page" class="page center">
-                <div class="binding"></div>
                 <div class="cover_inner page_inner center">
+                    <div class="user_input center">
+                        <h1>The More You <span>Tic-Tac-Know</span></h1>
+                        <h2>(About Citations)</h2>
+                        <div class="choose_board">
+                            <p>Choose your board size! (3x3 up to 12x12)</p>
+                            <select name="choose_board">
+                                <option value="3">3x3</option>
+                                <option value="4">4x4</option>
+                                <option value="5">5x5</option>
+                                <option value="6">6x6</option>
+                                <option value="7">7x7</option>
+                                <option value="8">8x8</option>
+                                <option value="9">9x9</option>
+                                <option value="10">10x10</option>
+                                <option value="11">11x11</option>
+                                <option value="12">12x12</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="start_button center">START</div>
                 </div>
             </div>
@@ -43,18 +63,23 @@
             </div>
         </div>
         <div id="footer">
-            <div id="player_1" class="player">
-                <div class="player_name"></div>
-                <div class="player_stats"></div>
-            </div>
-            <div id="phone">
-                <div class="timer"></div>
-                <div class="reset"></div>
-            </div>
-            <div id="player_2" class="player">
-                <div class="player_name">
+            <div id="player_1" class="player center">
+                <div class="player_content center">
+                    <div class="player_name center">Player 1</div>
+                    <div class="player_stats center">Wins: so many</div>
                 </div>
-                <div class="player_stats">
+            </div>
+            <div id="phone" class="center">
+                <div class="phone_content center">
+                    <div class="timer center">Timer</div>
+                    <div class="timer_clock center">00:00</div>
+                    <div class="reset center">Reset Game</div>
+                </div>
+            </div>
+            <div id="player_2" class="player center">
+                <div class="player_content center">
+                    <div class="player_name center">Player 2</div>
+                    <div class="player_stats center">Wins: much wins</div>
                 </div>
             </div>
         </div>
