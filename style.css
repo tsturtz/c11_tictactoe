@@ -148,25 +148,26 @@ select[name="choose_board"] {
 }
 
 #player_1, #player_2 {
-    background-size: 100%;
+    background-size: 100% !important;
     font-family: 'Kalam', cursive;
 }
 
 #player_1 {
     background: url(images/p1-note.png) no-repeat top center;
     top: 0;
-    left: 12vh;
+    left: 5vh;
     transform: rotate(2deg);
 }
 
 #player_2 {
     background: url(images/p2-note.png) no-repeat top center;
     top: 0;
-    right: 12vh;
+    right: 5vh;
     transform: rotate(-4deg);
 }
 
 .player {
+    position: absolute;
     top: 0;
     height: 25vh;
     width: 25vh;
