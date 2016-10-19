@@ -61,7 +61,7 @@ var game_template = function(main_element){
         [2,4,6]
     ];
     this.create_cells = function(cell_per_row){
-        this.cell_size = 100/cell_per_row;
+        this.cell_size = Math.floor(100/cell_per_row);
         this.cell_count = cell_per_row * cell_per_row;
         //console.log('game template create cells called');
         for(var i=0; i < this.cell_count; i++){
@@ -146,6 +146,7 @@ var start_game = function(){
     $('.start_button').click(function(){
         var board_size = $('select').val();
         main_game.create_cells(board_size);
+
     });
 };
 
