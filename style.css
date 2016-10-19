@@ -9,7 +9,7 @@ body {
     justify-content: center;
     margin: 0;
     background-color: beige;
-    background: url(images/stock-photo-blank-office-desk-background-with-copy-space-for-your-text-top-view-business-and-office-supplies-220530460.jpg) no-repeat center center;
+    background: url(images/desk-bg.jpg) no-repeat center center;
     background-size: cover;
     font-family: 'Permanent Marker', cursive;
 }
@@ -21,14 +21,13 @@ body {
 }
 
 #logo {
+    background: url(images/logo-note.png) no-repeat center center;
+    background-size: 100%;
     position: absolute;
-    top: 50px;
-    left: 50px;
-    height: 20vh;
-    width: 20vh;
-    border-radius: 50%;
-    background-color: #6a6969;
-    border: 10px solid white;
+    top: 0;
+    left: 10vh;
+    height: 25vh;
+    width: 25vh;
     box-sizing: border-box;
 }
 
@@ -40,16 +39,16 @@ body {
 }
 
 #notebook {
-    height: 80%;
+    height: 75%;
     width: 60vw;
     position: relative;
 }
 
 .page_inner {
-    height: 30vw;
-    width: 30vw;
+    height: 80%;
+    width: 80%;
     background-color: #2d91e6;
-    margin-left: 5vw;
+    margin-left: 10%;
     z-index: -1;
 }
 
@@ -62,36 +61,35 @@ body {
     box-shadow: 3px 3px 5px rgba(0,0,0,.3);
 }
 
-.binding {
+/*.binding {
     height: 100%;
     width: 5vw;
     background-color: black;
     position: absolute;
     left: 0;
     z-index: 1;
-}
+}*/
 
 #footer {
-    height: 20%;
+    height: 25%;
     width: 60vw;
-    background-color: #5f1f18;
     bottom: 0;
-    position: fixed;
+    position: absolute;
     display: flex;
-    border-top: 2px solid #000;
+    justify-content: space-around;
 }
 
 .player {
     height: 100%;
-    width: 20vw;
-    background-color: yellow;
     display: inline-block;
+    width: 25vh;
 }
 
 #phone {
     height: 100%;
-    width: 20vw;
-    background-color: burlywood;
+    width: 30vh;
+    background: url(images/timer-phone.png) no-repeat top center;
+    background-size: 100%;
     display: inline-block;
 }
 
@@ -107,4 +105,14 @@ body {
     border: 2px solid white;
     border-radius: 10px;
     font-size: 3vw;
+}
+
+#player_1 {
+    background: url(images/p1-note.png) no-repeat top center;
+    background-size: 100%;
+}
+
+#player_2 {
+    background: url(images/p2-note.png) no-repeat top center;
+    background-size: 100%;;
 }
