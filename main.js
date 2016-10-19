@@ -212,23 +212,24 @@ var questions = [{
     {
         question: 'If the reader of your paper wants more information on a source cited-in text, where do they look for information?',
         choices: ['(a) The Internet', '(b) The index', '(c) Your works cited document'],
-        answer: 'Your works cited document.',
+        answer: '(c) Your works cited document.'
         // explanation: 'It provides a full citation which gives the reader information about the in-text source you provide.'
     },
     {
         question: 'What type of source is this citation for?<br>Stanton, Daniel. "Methods of Analysis in Research Papers". <em>Science of Informatics</em>, vol. 12, no. 2, 2011, pp. 2-15. <em>JSTOR</em>, doi:10.10.5.1/access_secure_doc#30892. Acessed 11 Oct. 2015.',
-        choices: ['This citation is for a journal article in a database called <em>JSTOR</em>.', 'anything else provided'],
-        answer: 'anything else provided'
+        choices: ['(a) This citation is for a journal article in a database called <em>JSTOR</em>.', '(b) anything else provided'],
+        answer: '(b) anything else provided'
     },
     {
         question: 'In this citation, what is the name of the publisher?<br>Jones, Andrew. "The Cambodian Genocide." <em>Genocide: A comprehensive introduction</em>, Routledge, 2006, pp 40-60.',
-        choices: ['Jones, Andrew', 'The Cambodian Genocide', '<em>Genocide: A comprehensive introduction</em>', '2006', 'pp. 40-60'],
-        answer: 'Routledge'
+        choices: ['(a) Jones, Andrew', '(b) The Cambodian Genocide', '(c) <em>Genocide: A comprehensive introduction</em>', '(d) 2006', '(e) pp. 40-60', '(f) Routledge'],
+        answer: '(f) Routledge'
     },
     {
-        question: 'In this citation, what does et al. stand for?<br> Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
-        choices: ['(a) The words et al. are a suffix to the author\'s name.', '(b) The words et al. mean "and others", because there are more htan three authors.', '(c) The words et al. mean there are editors and authors for this book.'],
-        answer: '(b) The words et al. is latin for "and others" and is used when there are 3+ authors or 2+ editors'
+        question: 'In this citation, what does et al. stand for?<br>Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
+        choices: ['(a) The words et al. are a suffix to the author\'s name.', '(b) The words et al. mean "and others", because there are more than three authors.', '(c) The words et al. mean there are editors and authors for this book.'],
+        answer: '(b) The words et al. is latin for "and others", because there are more than three authors.'
+        // explanation: 'and is used when there are 3+ authors or 2+ editors'
     },
     {
         question: 'When citing sources in your paper:',
@@ -238,7 +239,7 @@ var questions = [{
     {
         question: 'In MLA 8, are you required to include page numbers at the top of your works cited and/or annotated bibliography pages?',
         choices: ['(a) No, only your paper needs to have page numbers', '(b) Yes, your paper, works cited, and annotated bibliography should have a running page number from the beginning of the document to the end.'],
-        answer: '(b) (b) Yes, your paper, works cited, and annotated bibliography should have a running page number from the beginning of the document to the end.'
+        answer: '(b) Yes, your paper, works cited, and annotated bibliography should have a running page number from the beginning of the document to the end.'
     },
     {
         question: 'Where in your paper does your works cited go?',
@@ -281,7 +282,7 @@ var questions = [{
     },
     {
         question: 'Which example is a proper in-text (parenthetical) citation?',
-        choices: ['(a) (239 Smith)., (b) (Smith, 239)., (c) (Smith, p. 239)., (d) (Smith 239).'],
+        choices: ['(a) (239 Smith).', '(b) (Smith, 239).', '(c) (Smith, p. 239).', '(d) (Smith 239).'],
         answer: '(d) (Smith 239).'
         // explanation:'There is no comma, and no p. used in the parenthetical citation.'
     },
@@ -293,7 +294,7 @@ var questions = [{
     {
         question: 'If a webpage citation has no author, what part of the citation do you use as the in-text or parenthetical citation?',
         choices: ['(a) The webpage article title (which is in quotes)', '(b) The publisher of the website'],
-        answer: '(a) The webpage article title (which is in quotes)',
+        answer: '(a) The webpage article title (which is in quotes)'
         // explanation: 'this would be the next part of your citation, after an author’s name, so you would use the article title as your in-text citation.'
     },
     {
