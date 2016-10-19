@@ -53,8 +53,6 @@ body {
 .page_inner {
     height: 50vh;
     width: 50vh;
-    background: url(images/notebook-lines.jpg) no-repeat center center;
-    background-size: 100%;
     z-index: -1;
 }
 
@@ -77,24 +75,6 @@ body {
     z-index: 1;
 }
 
-/*.binding {
-    height: 100%;
-    width: 5vw;
-    background-color: black;
-    position: absolute;
-    left: 0;
-    z-index: 1;
-}*/
-
-#footer {
-    height: 28%;
-    width: 60vw;
-    bottom: 0;
-    position: absolute;
-    display: flex;
-    justify-content: space-around;
-}
-
 .cover_inner {
     z-index: 1;
     flex-direction: column;
@@ -112,17 +92,13 @@ h1, h2 {
     margin: 0;
 }
 
-.user_input h2 {
-    color: darkblue;
-}
-
 .choose_board {
     margin-top: 2vh;
 }
 
 select[name="choose_board"] {
     background-color: transparent;
-    border: 2px solid darkblue;
+    border: 2px solid black;
     font-size: 2.5vh;
     font-family: 'Kalam', cursive;
     padding: 2% 5% 0;
@@ -146,6 +122,15 @@ select[name="choose_board"] {
     cursor: pointer;
 }
 
+#footer {
+    height: 28%;
+    width: 60vw;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+}
+
 #player_1, #player_2 {
     background-size: 100%;
     font-family: 'Kalam', cursive;
@@ -153,24 +138,30 @@ select[name="choose_board"] {
 
 #player_1 {
     background: url(images/p1-note.png) no-repeat top center;
+    top: 0;
+    left: 12vh;
+    transform: rotate(2deg);
 }
 
 #player_2 {
     background: url(images/p2-note.png) no-repeat top center;
+    top: 0;
+    right: 12vh;
+    transform: rotate(-4deg);
 }
 
 .player {
-    height: 100%;
+    top: 0;
+    height: 25vh;
     width: 25vh;
-    position: relative;
+    font-family: 'Kalam', cursive;
+    font-size: 1.5vh;
+    flex-direction: column;
 }
 
-.player_content {
-    position: relative;
-    top: -5vh;
-    height: 7vh;
+.player_name {
+    font-size: 5vh;
     display: block;
-    font-size: 4vh;
 }
 
 .player_stats {
@@ -184,6 +175,7 @@ select[name="choose_board"] {
     background-size: 100%;
     font-family: 'digital-7', sans-serif;
     color: white;
+    text-align: center;
 }
 
 .phone_content {
