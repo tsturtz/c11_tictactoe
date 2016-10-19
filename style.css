@@ -26,7 +26,6 @@ body {
     width: 600px;
     display: flex;
     justify-content: center;
-    background-color: red;
 }
 
 #notebook {
@@ -52,6 +51,7 @@ body {
     width: 450px;
     background-color: white;
     position: absolute;
+    border-radius: 50px 50px 50px 50px;
 }
 .binding {
     height: 100%;
