@@ -40,26 +40,68 @@ var cell_template = function(parent){
 
 
 
-var game_template = function(main_element){
+var game_template = function(main_element, size_of_board){
     //console.log('game template constructor called');
     var self = this;
     this.element = main_element;
     this.cell_array = [];
     this.players = [];
     this.current_player = 0;
+    this.board_size = size_of_board;
     //   0    1    2
     //   3    4    5
     //   6    7    8
-    this.win_conditions = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6]
-    ];
+    this.populate_win_conditions = function(size){
+        var win_cond = [];
+        var row_size = parseFloat(size);
+
+        //find max horizontal win_cond conditions
+        for(var i = 0; i < row_size*row_size; i)
+        {
+            var temp = [];
+            for(var j=i; j<i+row_size; j++)
+            {
+                temp.push(j);
+            }
+            win_cond.push(temp);
+            i=j;
+        }
+
+        console.log('horizontal', win_cond);
+        //find max vertical win conditions
+        for(var i=0;  i< row_size; i++)
+        {
+            temp = [];
+            for(j=i;j<row_size*row_size;j+=row_size)
+            {
+                temp.push(j);
+            }
+            win_cond.push(temp);
+        }
+        console.log('vertical ', win_cond);
+        //Diagonal left to right
+        temp=[];
+        for(var i=0;i<row_size*row_size;i+=row_size+1)
+        {
+
+            temp.push(i);
+        }
+        win_cond.push(temp);
+
+        //diagonal right to left;
+        temp = [];
+        for(var i=row_size-1; i< row_size*row_size-1; i+=row_size-1)
+        {
+            temp.push(i);
+        }
+        win_cond.push(temp);
+        //console.log('Win Cond: ', win_cond);
+        return win_cond;
+    };
+
+    this.win_conditions = this.populate_win_conditions(this.board_size);
+    console.log('win: ', this.win_conditions);
+
     this.create_cells = function(cell_per_row){
         this.cell_size = Math.floor(100/cell_per_row);
         this.cell_count = cell_per_row * cell_per_row;
@@ -112,7 +154,7 @@ var game_template = function(main_element){
                 if(this.cell_array[this.win_conditions[i][j]].get_symbol() == current_player_symbol){
                     console.log('symbols match');
                     count++;
-                    if(count==3){
+                    if(count==size_of_board){
                         console.log('someone won'); this.player_wins(this.players[this.current_player]);
                     }//end of count == 3
                 } //end of symbols match
@@ -145,6 +187,7 @@ var player_template = function(symbol, element){
 var start_game = function(){
     $('.start_button').click(function(){
         var board_size = $('select').val();
+        main_game = new game_template($('.game_inner'), board_size);
         main_game.create_cells(board_size);
         main_game.create_players();
         $('#cover_page').hide();
@@ -163,7 +206,6 @@ var reset_game = function(){
 
 var main_game = null;
 $(document).ready(function(){
-    main_game = new game_template($('.game_inner'));
     start_game();
     reset_game();
 });
