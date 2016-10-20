@@ -228,7 +228,7 @@ $(document).ready(function(){
 });
 
 var questions = [{
-        question: 'Veronica Smith<br> Mr. Thornton<br>U.S. History – Per. 2<br>10 Sept. 2016<br>Is this a proper MLA heading?',
+        question: 'Veronica Smith<br> Mr. Thornton<br>U.S. History – Per. 2<br>10 Sept. 2016<br><br>Is this a proper MLA heading?',
         choices: ['(a) No. In your heading, the month should be spelled out (10 September 2016)', '(b) Yes, it is correct'],
         answer: '(a) No. In your heading, the month should be spelled out (10 September 2016)'
     },
