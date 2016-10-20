@@ -20,7 +20,9 @@ var cell_template = function(parent){
         return this.element;
     };
     this.pick_question=function(){
-
+        if(self.element.hasClass('selected')){
+            return;
+        }
         $("#game_page").toggle();
         this.question=questions[Math.floor(Math.random()*questions.length)];
         console.log(this.question);
@@ -71,9 +73,10 @@ var cell_template = function(parent){
                     $(".question").remove();
                     $(".options").remove();
                     $("#game_page").toggle();
+                    self.parent.cell_clicked(self);
                 },2000)
             }
-        })
+        });
         return this.question;
     };
 
