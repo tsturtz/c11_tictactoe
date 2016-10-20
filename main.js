@@ -161,7 +161,6 @@ var game_template = function(main_element, size_of_board){
         temp=[];
         for(var i=0;i<row_size*row_size;i+=row_size+1)
         {
-
             temp.push(i);
         }
         win_cond.push(temp);
