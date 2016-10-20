@@ -1,6 +1,7 @@
 /**
  * Created by kevin on 10/18/16.
  */
+var myVar;
 var cell_template = function(parent){
     var self = this;
     this.parent = parent;
@@ -23,7 +24,9 @@ var cell_template = function(parent){
     var time=9;
 
     this.pick_question=function(){
-
+        if(self.element.hasClass('selected')){
+            return;
+        }
         $("#game_page").toggle();
         this.question=questions[Math.floor(Math.random()*questions.length)];
         console.log(this.question);
@@ -81,10 +84,10 @@ var cell_template = function(parent){
                     $(".question").remove();
                     $(".options").remove();
                     $("#game_page").toggle();
-                    self.change_symbol();
+                    self.parent.cell_clicked(self);
                 },2000)
             }
-        })
+        });
         return this.question;
     };
 
@@ -234,11 +237,13 @@ var game_template = function(main_element, size_of_board){
         //TODO check conditions
     };
     this.player_wins = function(player){
+        clearInterval(myVar);
+        $(".timer_clock").text("0:00");
         console.log(player.get_symbol()+' won the game');
         //alert(player.get_symbol()+' won the game');
         $("#game_page, #question_page").hide();
-        //git avar win_msg = $('<h1>').text(player.get_symbol()+' won the game!!');
-        $(".win_inner").html(player.get_symbol()+' won the game!!');
+        //var win_msg = $('<h1>').text(player.get_symbol()+' won the game!');
+        $(".win_inner").html(player.get_symbol()+' won the game!');
         $("#win_page").show();
     };
 };
@@ -263,7 +268,25 @@ var start_game = function(){
 
     $('.start_button').click(function(){
         var time=1;
-        myVar=setInterval(function(){$('.timer_clock').text(Math.floor(time/60).toString()+":"+(time-Math.floor(time/60)*60).toString());time++}, 1000);
+
+
+        myVar=setInterval(function(){
+            var min=Math.floor(time/60);
+            if (min<10){
+                min="0"+min;
+            }
+            else{
+                min=min.toString();
+            }
+            var second=time-Math.floor(time/60)*60;
+            if(second<10){
+                second="0"+second;
+            }
+            else{
+                second=second.toString();
+            }
+            $('.timer_clock').text(min+":"+second);time++
+        }, 1000);
         var board_size = $('select').val();
         main_game = new game_template($('.game_inner'), board_size);
         main_game.create_cells(board_size);
@@ -275,10 +298,12 @@ var start_game = function(){
 //reset board and player states. return to start
 var reset_game = function(){
     $('.reset').click(function(){
+        clearInterval(myVar);
+        $(".timer_clock").text("0:00");
         $('.game_inner').html('');
         $('div#player_1').removeClass('active_player');
         $('div#player_2').removeClass('active_player');
-        $('#cover_page').show();
+        $('#cover_page, #game_page, #question_page').show();
         $('#win_page').hide();
     });
 };
@@ -436,4 +461,4 @@ var questions = [{
         choices: ['(a) lions', '(b) library', '(c) JSerra'],
         answer: '(c) JSerra'
     }
-]
+];
