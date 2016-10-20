@@ -122,7 +122,9 @@ body {
     align-items: center;
     color: green;
 }
-
+.win_inner img{
+    height: inherit;
+}
 .about_inner {
     z-index: 1;
 }
