@@ -73,7 +73,7 @@ var cell_template = function(parent){
                     $("#game_page").toggle();
                 },2000)
             }
-        })
+        });
         return this.question;
     };
 
@@ -412,4 +412,4 @@ var questions = [{
         choices: ['(a) lions', '(b) library', '(c) JSerra'],
         answer: '(c) JSerra'
     }
-]
+];

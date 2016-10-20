@@ -106,6 +106,12 @@ body {
     font-size: 1.8vh;
 }
 
+.cell {
+    font-family: 'Kalam', sans-serif;
+    text-align: center;
+    cursor: pointer;
+}
+
 .win_inner {
     z-index: 2;
 }
