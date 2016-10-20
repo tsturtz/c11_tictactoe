@@ -21,8 +21,7 @@ var cell_template = function(parent){
         ).click(this.pick_question);
         return this.element;
     };
-    var time=9;
-
+    //todo combine question and cell click
     this.pick_question=function(){
         if(self.element.hasClass('selected')){
             return;
@@ -30,15 +29,11 @@ var cell_template = function(parent){
         $("#game_page").toggle();
         this.question=questions[Math.floor(Math.random()*questions.length)];
         console.log(this.question);
-        var timer_dom=$("<div>",{
-           id:'output'
-        });
+
         var question_dom=$("<div>",{
             html:this.question.question,
             class:"question"
         });
-
-        $(".question_inner").append(timer_dom);
 
         $(".question_inner").append(question_dom);
         var question=this.question;
@@ -105,7 +100,7 @@ var cell_template = function(parent){
         self.parent.cell_clicked(self);
     };
     this.change_symbol = function(symbol){
-        self.element.text(symbol);
+        self.element.html(symbol);
     };
     this.get_symbol = function(){
         return self.symbol;
@@ -125,6 +120,8 @@ var game_template = function(main_element, size_of_board){
     //   0    1    2
     //   3    4    5
     //   6    7    8
+    //todo avoid getting all win conditions
+    //todo from clicked cell, check surrounding cells up to desire match for winnning condition
     this.populate_win_conditions = function(size){
         var win_cond = [];
         var row_size = parseFloat(size);
@@ -188,8 +185,10 @@ var game_template = function(main_element, size_of_board){
         }
     };
     this.create_players = function(){
-        var player1 = new player_template('X', $('#player_1'));
-        var player2 = new player_template('O', $('#player_2'));
+        var p1 = '<img src="images/x.png">';
+        var p2 = '<img src="images/o.png">';
+        var player1 = new player_template(p1, $('#player_1'));
+        var player2 = new player_template(p2, $('#player_2'));
         this.players.push(player1);
         this.players.push(player2);
         this.players[0].activate_player();
@@ -234,7 +233,6 @@ var game_template = function(main_element, size_of_board){
                 } //end of symbols match
             } //end of inner loop
         } //end of outer loop
-        //TODO check conditions
     };
     this.player_wins = function(player){
         clearInterval(myVar);

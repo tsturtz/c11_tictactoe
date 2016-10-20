@@ -247,6 +247,12 @@ select[name="choose_board"] {
 .cell{
     border: 1px solid black;
     display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.cell img{
+    height: 100%;
+    width: 100%;
 }
 .active_player{
     color: red;
