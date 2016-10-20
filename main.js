@@ -281,7 +281,7 @@ var questions = [{
     },
     {
         question: 'Are in-text citations the same thing as parenthetical citations?',
-        choices: ['(a) Yes, they are the same thing', '(b) No they are different'],
+        choices: ['(a) Yes, they are the same thing', '(b) No, they are different'],
         answer: '(a) Yes, they are the same thing'
     },
     {
@@ -295,12 +295,12 @@ var questions = [{
         answer: '(c) Double-spaced, 12 pt. Times New Roman font'
     },
     {
-        question: 'Choose the correct way to list your sources on your Works Cited document',
+        question: 'Choose the correct way to list your sources on your Works Cited document:',
         choices: ['(a) List them in the order that they appear in your paper', '(b) List them in alphabetical (A to Z) order'],
         answer: '(b) List them in alphabetical (A to Z) order'
     },
     {
-        question: 'Which method of indentation do you use on your works cited document when formatting your citations:',
+        question: 'Which method of indentation do you use on your works cited document when formatting your citations?',
         choices: ['(a) Hanging indent', '(b) Block indent'],
         answer: '(a) Hanging indent'
     },
@@ -311,8 +311,8 @@ var questions = [{
     },
     {
         question: 'When do you cite a source in your paper?',
-        choices: ['(a) When you directly quote someone or something', '(b) When you interview someone and use something that they said', '(c) When you use common knowledge – like ‘Water freezes at 32 degrees F', '(d) When you put a direct quote into your own words', '(a), (b), and (d) only'],
-        answer: '(a), (b), and (d) only'
+        choices: ['(a) When you directly quote someone or something', '(b) When you interview someone and use something that they said', '(c) When you use common knowledge – like "Water freezes at 32 degrees F"', '(d) When you put a direct quote into your own words', '(e) a), b), and d) only'],
+        answer: '(e) a), b), and d) only'
     },
     {
         question: 'In this citation, what is the title of the book? <br>Barnaby, Benjamin. <em>Cool Science for Middle School Fairs</em>, Yale UP, 2010.',
@@ -321,7 +321,7 @@ var questions = [{
 
     },
     {
-        question: 'What type of source is this citation for?<br>Garner Anthony. "History of 20th Century Literature." <em>Literature Database,</em> www.litdb.com/history/20th-century.html. Accessed 16 Aug. 2016',
+        question: 'What type of source is this citation for?<br><br>Garner Anthony. "History of 20th Century Literature." <em>Literature Database,</em> www.litdb.com/history/20th-century.html. Accessed 16 Aug. 2016',
         choices: ['(a) A book on 20th Century Literature', '(b) A journal article in a database', '(c) A webpage'],
         answer: '(c) A webpage'
     },
@@ -331,17 +331,17 @@ var questions = [{
         answer: '(c) Your works cited document'
     },
     {
-        question: 'What type of source is this citation for?<br>Stanton, Daniel. "Methods of Analysis in Research Papers". <em>Science of Informatics</em>, vol. 12, no. 2, 2011, pp. 2-15. <em>JSTOR</em>, doi:10.10.5.1/access_secure_doc#30892. Acessed 11 Oct. 2015.',
-        choices: ['(a) This citation is for a journal article in a database called <em>JSTOR</em>.', '(b) anything else provided'],
+        question: 'What type of source is this citation for?<br><br>Stanton, Daniel. "Methods of Analysis in Research Papers". <em>Science of Informatics</em>, vol. 12, no. 2, 2011, pp. 2-15. <em>JSTOR</em>, doi:10.10.5.1/access_secure_doc#30892. Acessed 11 Oct. 2015.',
+        choices: ['(a) This citation is for a journal article in a database called <em>JSTOR</em>.', '(b) Anything else provided.'],
         answer: '(b) anything else provided'
     },
     {
-        question: 'In this citation, what is the name of the publisher?<br>Jones, Andrew. "The Cambodian Genocide." <em>Genocide: A comprehensive introduction</em>, Routledge, 2006, pp 40-60.',
+        question: 'In this citation, what is the name of the publisher?<br><br>Jones, Andrew. "The Cambodian Genocide." <em>Genocide: A comprehensive introduction</em>, Routledge, 2006, pp 40-60.',
         choices: ['(a) Jones, Andrew', '(b) The Cambodian Genocide', '(c) <em>Genocide: A comprehensive introduction</em>', '(d) Routledge','(e) 2006','(f) pp. 40-60'],
         answer: '(d) Routledge'
     },
     {
-        question: 'In this citation, what does et al. stand for?<br> Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
+        question: 'In this citation, what does et al. stand for?<br><br> Pearsall, Mitchell, et al. <em>A Concise History of Central America</em> Cambridge UP, 2015.',
         choices: ['(a) The words et al. are a suffix to the author\'s name.', '(b) The words et al. mean "and others", because there are more than three authors.', '(c) The words et al. mean there are editors and authors for this book.'],
         answer: '(b) The words et al. mean "and others", because there are more than three authors.'
     },
@@ -359,7 +359,7 @@ var questions = [{
     },
     {
         question: 'Where in your paper does your works cited go?',
-        choices: ['(a) On the same page right after the last paragraph of your paper.', '(b) On page one of your document', '(c) On a separate page after your paper.'],
+        choices: ['(a) On the same page right after the last paragraph of your paper.', '(b) On page one of your document.', '(c) On a separate page after your paper.'],
         answer: '(c) On a separate page after your paper.'
     },
     {
@@ -374,11 +374,11 @@ var questions = [{
     },
     {
         question: 'When using NoodleTools to cite your sources, do you have to fill in every single box to get a proper citation?',
-        choices: ['(a) No. Only fill in the boxes necessary for the source you are citing.', '(b) Yes. That\'s why the boxes are there'],
+        choices: ['(a) No. Only fill in the boxes necessary for the source you are citing.', '(b) Yes. That\'s why the boxes are there.'],
         answer: '(a) No. Only fill in the boxes necessary for the source you are citing.'
     },
     {
-        question: 'When you block indent a direct quote, how many spaces or tabs do you use to indent',
+        question: 'When you block indent a direct quote, how many spaces or tabs do you use to indent?',
         choices: ['(a) Five spaces or one tab.', '(b) Ten spaces or two tabs.'],
         answer: '(a) Five spaces or one tab.'
         // explanation: '-this is new to MLA 8.'
@@ -403,7 +403,7 @@ var questions = [{
     },
     {
         question: 'Is this the correct order to list these citations on your works cited? How do you know what order to put them in?<br><br>Smith, John. "Modern World History."<br>Smith, John. "World History Overview"',
-        choices: ['(a) No. This is not the correct order', '(b) Yes, this is the correct order to list them. Since the author’s name is the same – you have to alphabetize by the Title. So, “Modern” is before “World”.'],
+        choices: ['(a) No, this is not the correct order.', '(b) Yes, this is the correct order to list them. Since the author’s name is the same – you have to alphabetize by the Title. So, “Modern” is before “World”.'],
         answer: '(b) Yes, this is the correct order to list them. Since the author’s name is the same – you have to alphabetize by the Title. So, “Modern” is before “World”.'
     },
     {
