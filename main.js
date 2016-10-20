@@ -3,6 +3,7 @@
  */
 var myVar;
 var cell_template = function(parent){
+    //constructor; parent is game template ;
     var self = this;
     this.parent = parent;
     this.element = null;
@@ -21,12 +22,16 @@ var cell_template = function(parent){
         ).click(this.pick_question);
         return this.element;
     };
+
     //todo combine question and cell click
+
+    //when cell clicked question comes up
     this.pick_question=function(){
         if(self.element.hasClass('selected')){
             return;
         }
         $("#game_page").toggle();
+        //picks random question object in array
         this.question=questions[Math.floor(Math.random()*questions.length)];
         console.log(this.question);
 
@@ -35,33 +40,39 @@ var cell_template = function(parent){
             class:"question"
         });
 
+        //displays question to question page
         $(".question_inner").append(question_dom);
         var question=this.question;
+        //loops through choice array inside question object - checks if answer chosen is correct or not
         for (var i=0;i<this.question.choices.length;i++){
             if (this.question.choices[i]===question.answer) {
+                //creates correct answer choice
                 var option_dom = $("<div>", {
                     html: this.question.choices[i],
                     class: "options",
                     id:"right"
                 });
+                //displays answer choices per question
                 $(".question_inner").append(option_dom);
             }
             else{
+                //creates wrong answer choice
                 var option_dom = $("<div>", {
                     html: this.question.choices[i],
                     class: "options",
-
                 });
                 $(".question_inner").append(option_dom);
             }
         }
-
+        //when user clicks a choice, it turns green
         $(".options").click(function(){
 
             console.log($(this).html());
             if($(this).html()===question.answer){
                 $(this).css("background-color","lightgreen");
+                //remove click handler
                 $(".options").unbind();
+                //after 2 seconds go back to game-board
                 setTimeout(function(){
                     $(".question").remove();
                     $(".options").remove();
@@ -71,7 +82,7 @@ var cell_template = function(parent){
 
             }
             else{
-
+            //when user clicks a choice, it turns red and shows which choice was correct
                 $(this).css("background-color","red");
                 $("#right").css("background-color","lightgreen");
                 $(".options").unbind();
@@ -79,6 +90,7 @@ var cell_template = function(parent){
                     $(".question").remove();
                     $(".options").remove();
                     $("#game_page").toggle();
+                    //switches players from player 1 to 2
                     self.parent.cell_clicked(self);
                 },2000)
             }
@@ -90,11 +102,13 @@ var cell_template = function(parent){
         if(self.element.hasClass('selected')){
             return;
         }
-        //console.log('this cell clicked',self.element);
+        //console.log('this cell clicked',self.element)
         var current_player = self.parent.get_current_player();
         console.log(1);
+        //get symbol for current player ex: x or o
         self.symbol = current_player.get_symbol();
         console.log('current player\'s symbol: '+self.symbol);
+        //to show that the cell was already clicked/selected
         self.element.addClass('selected');
         self.change_symbol(self.symbol);
         self.parent.cell_clicked(self);
@@ -107,8 +121,7 @@ var cell_template = function(parent){
     };
 };
 
-
-
+//main_element = game board container
 var game_template = function(main_element, size_of_board){
     //console.log('game template constructor called');
     var self = this;
@@ -173,10 +186,12 @@ var game_template = function(main_element, size_of_board){
     this.win_conditions = this.populate_win_conditions(this.board_size);
     console.log('win: ', this.win_conditions);
 
+//create board
     this.create_cells = function(cell_per_row){
         this.cell_size = Math.floor(100/cell_per_row);
         this.cell_count = cell_per_row * cell_per_row;
         //console.log('game template create cells called');
+        //loops amount of times there are cells in board ex: 5x5=25 times
         for(var i=0; i < this.cell_count; i++){
             var cell = new cell_template(this);
             var cell_element = cell.create_self(this.cell_size);
@@ -208,13 +223,16 @@ var game_template = function(main_element, size_of_board){
     };
     this.cell_clicked = function(clicked_cell){
         self.check_win_conditions();
+        //to switch between player turns and add css to indicate
         self.players[self.current_player].deactivate_player();
+        //switch between who's being pointed to in the array
         self.switch_players();
         self.players[self.current_player].activate_player();
 
     };
     this.check_win_conditions = function(){
         //console.log('check win conditions called');
+        //checks which player is playing and gets their symbol
         var current_player_symbol = this.players[this.current_player].get_symbol();
 
         for(var i=0; i<this.win_conditions.length;i++){
@@ -223,7 +241,7 @@ var game_template = function(main_element, size_of_board){
             //console.log('checking win conditions ',this.win_conditions);
 
             for(var j=0; j<this.win_conditions[i].length; j++){
-
+                //checks where players' symbols are and if it matches a win condition
                 if(this.cell_array[this.win_conditions[i][j]].get_symbol() == current_player_symbol){
                     console.log('symbols match');
                     count++;
@@ -236,7 +254,7 @@ var game_template = function(main_element, size_of_board){
     };
     this.player_wins = function(player){
         clearInterval(myVar);
-        $(".timer_clock").text("0:00");
+        $(".timer_clock").text("00:00");
         console.log(player.get_symbol()+' won the game');
         //alert(player.get_symbol()+' won the game');
         $("#game_page, #question_page").hide();
@@ -267,9 +285,11 @@ var start_game = function(){
     $('.start_button').click(function(){
         var time=1;
 
-
+//start timer
         myVar=setInterval(function(){
+            //min variable for minutes
             var min=Math.floor(time/60);
+            //to make start be 00:00
             if (min<10){
                 min="0"+min;
             }
@@ -286,6 +306,7 @@ var start_game = function(){
             $('.timer_clock').text(min+":"+second);time++
         }, 1000);
         var board_size = $('select').val();
+        //creates game template board
         main_game = new game_template($('.game_inner'), board_size);
         main_game.create_cells(board_size);
         main_game.create_players();
