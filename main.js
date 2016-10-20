@@ -292,10 +292,6 @@ var reset_game = function(){
 
 var main_game = null;
 $(document).ready(function(){
-
-
-    main_game = new game_template($('.game_inner'));
-
     start_game();
     reset_game();
 });
