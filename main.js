@@ -285,7 +285,7 @@ var reset_game = function(){
         $('.game_inner').html('');
         $('div#player_1').removeClass('active_player');
         $('div#player_2').removeClass('active_player');
-        $('#cover_page').show();
+        $('#cover_page, #game_page, #question_page').show();
         $('#win_page').hide();
     });
 };
