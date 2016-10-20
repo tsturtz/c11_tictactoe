@@ -223,7 +223,11 @@ var game_template = function(main_element, size_of_board){
     };
     this.player_wins = function(player){
         console.log(player.get_symbol()+' won the game');
-        alert(player.get_symbol()+' won the game');
+        //alert(player.get_symbol()+' won the game');
+        $("#game_page, #question_page").hide();
+        //git avar win_msg = $('<h1>').text(player.get_symbol()+' won the game!!');
+        $(".win_inner").html(player.get_symbol()+' won the game!!');
+        $("#win_page").show();
     };
 };
 
@@ -260,6 +264,7 @@ var reset_game = function(){
         $('div#player_1').removeClass('active_player');
         $('div#player_2').removeClass('active_player');
         $('#cover_page').show();
+        $('#win_page').hide();
     });
 };
 
