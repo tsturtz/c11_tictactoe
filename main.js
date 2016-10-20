@@ -240,8 +240,8 @@ var game_template = function(main_element, size_of_board){
         console.log(player.get_symbol()+' won the game');
         //alert(player.get_symbol()+' won the game');
         $("#game_page, #question_page").hide();
-        //git avar win_msg = $('<h1>').text(player.get_symbol()+' won the game!!');
-        $(".win_inner").html(player.get_symbol()+' won the game!!');
+        //var win_msg = $('<h1>').text(player.get_symbol()+' won the game!');
+        $(".win_inner").html(player.get_symbol()+' won the game!');
         $("#win_page").show();
     };
 };

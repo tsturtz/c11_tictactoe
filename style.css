@@ -114,6 +114,13 @@ body {
 
 .win_inner {
     z-index: 2;
+    font-size: 4vh;
+    text-transform: uppercase;
+    font-family: 'Kalam',sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: green;
 }
 
 .about_inner {
