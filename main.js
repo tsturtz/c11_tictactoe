@@ -9,6 +9,7 @@ var cell_template = function(parent){
     this.question=null;
     this.create_self = function(size){
         console.log('size: ', size);
+
         this.element = $("<div>",
             {
                 class:'cell',
@@ -19,15 +20,22 @@ var cell_template = function(parent){
         ).click(this.pick_question);
         return this.element;
     };
+    var time=9;
+
     this.pick_question=function(){
 
         $("#game_page").toggle();
         this.question=questions[Math.floor(Math.random()*questions.length)];
         console.log(this.question);
+        var timer_dom=$("<div>",{
+           id:'output'
+        });
         var question_dom=$("<div>",{
             html:this.question.question,
             class:"question"
         });
+
+        $(".question_inner").append(timer_dom);
 
         $(".question_inner").append(question_dom);
         var question=this.question;
@@ -51,6 +59,7 @@ var cell_template = function(parent){
         }
 
         $(".options").click(function(){
+
             console.log($(this).html());
             if($(this).html()===question.answer){
                 $(this).css("background-color","lightgreen");
@@ -58,12 +67,13 @@ var cell_template = function(parent){
                 setTimeout(function(){
                     $(".question").remove();
                     $(".options").remove();
-                    $("#game_page").toggle();
+                    $("#game_page").show();
                     self.cell_click();
                 },2000)
 
             }
             else{
+
                 $(this).css("background-color","red");
                 $("#right").css("background-color","lightgreen");
                 $(".options").unbind();
@@ -71,6 +81,7 @@ var cell_template = function(parent){
                     $(".question").remove();
                     $(".options").remove();
                     $("#game_page").toggle();
+                    self.change_symbol();
                 },2000)
             }
         });
@@ -83,6 +94,7 @@ var cell_template = function(parent){
         }
         //console.log('this cell clicked',self.element);
         var current_player = self.parent.get_current_player();
+        console.log(1);
         self.symbol = current_player.get_symbol();
         console.log('current player\'s symbol: '+self.symbol);
         self.element.addClass('selected');
@@ -223,7 +235,11 @@ var game_template = function(main_element, size_of_board){
     };
     this.player_wins = function(player){
         console.log(player.get_symbol()+' won the game');
-        alert(player.get_symbol()+' won the game');
+        //alert(player.get_symbol()+' won the game');
+        $("#game_page, #question_page").hide();
+        //git avar win_msg = $('<h1>').text(player.get_symbol()+' won the game!!');
+        $(".win_inner").html(player.get_symbol()+' won the game!!');
+        $("#win_page").show();
     };
 };
 
@@ -244,7 +260,10 @@ var player_template = function(symbol, element){
 };
 //apply start handler to get board size and initialize board
 var start_game = function(){
+
     $('.start_button').click(function(){
+        var time=1;
+        myVar=setInterval(function(){$('.timer_clock').text(Math.floor(time/60).toString()+":"+(time-Math.floor(time/60)*60).toString());time++}, 1000);
         var board_size = $('select').val();
         main_game = new game_template($('.game_inner'), board_size);
         main_game.create_cells(board_size);
@@ -260,11 +279,16 @@ var reset_game = function(){
         $('div#player_1').removeClass('active_player');
         $('div#player_2').removeClass('active_player');
         $('#cover_page').show();
+        $('#win_page').hide();
     });
 };
 
 var main_game = null;
 $(document).ready(function(){
+
+
+    main_game = new game_template($('.game_inner'));
+
     start_game();
     reset_game();
 });
