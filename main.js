@@ -1,6 +1,7 @@
 /**
  * Created by kevin on 10/18/16.
  */
+var myVar;
 var cell_template = function(parent){
     var self = this;
     this.parent = parent;
@@ -234,6 +235,8 @@ var game_template = function(main_element, size_of_board){
         //TODO check conditions
     };
     this.player_wins = function(player){
+        clearInterval(myVar);
+        $(".timer_clock").text("0:00");
         console.log(player.get_symbol()+' won the game');
         //alert(player.get_symbol()+' won the game');
         $("#game_page, #question_page").hide();
@@ -275,6 +278,8 @@ var start_game = function(){
 //reset board and player states. return to start
 var reset_game = function(){
     $('.reset').click(function(){
+        clearInterval(myVar);
+        $(".timer_clock").text("0:00");
         $('.game_inner').html('');
         $('div#player_1').removeClass('active_player');
         $('div#player_2').removeClass('active_player');
