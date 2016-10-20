@@ -242,8 +242,8 @@ var game_template = function(main_element, size_of_board){
         console.log(player.get_symbol()+' won the game');
         //alert(player.get_symbol()+' won the game');
         $("#game_page, #question_page").hide();
-        //git avar win_msg = $('<h1>').text(player.get_symbol()+' won the game!!');
-        $(".win_inner").html(player.get_symbol()+' won the game!!');
+        //var win_msg = $('<h1>').text(player.get_symbol()+' won the game!');
+        $(".win_inner").html(player.get_symbol()+' won the game!');
         $("#win_page").show();
     };
 };
@@ -268,7 +268,25 @@ var start_game = function(){
 
     $('.start_button').click(function(){
         var time=1;
-        myVar=setInterval(function(){$('.timer_clock').text(Math.floor(time/60).toString()+":"+(time-Math.floor(time/60)*60).toString());time++}, 1000);
+
+
+        myVar=setInterval(function(){
+            var min=Math.floor(time/60);
+            if (min<10){
+                min="0"+min;
+            }
+            else{
+                min=min.toString();
+            }
+            var second=time-Math.floor(time/60)*60;
+            if(second<10){
+                second="0"+second;
+            }
+            else{
+                second=second.toString();
+            }
+            $('.timer_clock').text(min+":"+second);time++
+        }, 1000);
         var board_size = $('select').val();
         main_game = new game_template($('.game_inner'), board_size);
         main_game.create_cells(board_size);
@@ -439,4 +457,4 @@ var questions = [{
         choices: ['(a) lions', '(b) library', '(c) JSerra'],
         answer: '(c) JSerra'
     }
-]
+];
