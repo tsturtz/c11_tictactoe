@@ -24,7 +24,9 @@ var cell_template = function(parent){
     var time=9;
 
     this.pick_question=function(){
-
+        if(self.element.hasClass('selected')){
+            return;
+        }
         $("#game_page").toggle();
         this.question=questions[Math.floor(Math.random()*questions.length)];
         console.log(this.question);
@@ -82,10 +84,10 @@ var cell_template = function(parent){
                     $(".question").remove();
                     $(".options").remove();
                     $("#game_page").toggle();
-                    self.change_symbol();
+                    self.parent.cell_clicked(self);
                 },2000)
             }
-        })
+        });
         return this.question;
     };
 
@@ -283,7 +285,7 @@ var reset_game = function(){
         $('.game_inner').html('');
         $('div#player_1').removeClass('active_player');
         $('div#player_2').removeClass('active_player');
-        $('#cover_page').show();
+        $('#cover_page, #game_page, #question_page').show();
         $('#win_page').hide();
     });
 };
