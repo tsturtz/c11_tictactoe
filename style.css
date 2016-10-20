@@ -106,8 +106,21 @@ body {
     font-size: 1.8vh;
 }
 
+.cell {
+    font-family: 'Kalam', sans-serif;
+    text-align: center;
+    cursor: pointer;
+}
+
 .win_inner {
     z-index: 2;
+    font-size: 4vh;
+    text-transform: uppercase;
+    font-family: 'Kalam',sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: green;
 }
 
 .about_inner {
